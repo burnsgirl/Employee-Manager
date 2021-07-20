@@ -1,4 +1,10 @@
 const inquirer = require('inquirer');
+const mysql = require('mysql');
+require("dotenv").config();
+// conection is breaking it
+// const connection = require('connection');
+const util = require("util");
+const DB = require("./db");
 
 
 function start () {
@@ -36,7 +42,7 @@ function start () {
 function allEmpl() {
     inquirer
         .prompt ({
-            name: employee,
+            name: 'employee',
             type: 'list',
             message: 'Choose an employee'
         })
@@ -54,7 +60,7 @@ function allEmpl() {
 function emplDept() {
     inquirer
     .prompt ({
-        name: department,
+        name: 'department',
         type: 'list',
         message: 'Choose a department',
         choices: ['Cashier', 'Bagger', 'Door Holder']
@@ -77,19 +83,19 @@ function emplDept() {
 function addEmpl() {
     inquirer
     .prompt ({
-        name: fName,
+        name: 'fName',
         type: 'input',
         message: "What is the employee's first name?"
     }, {
-        name: lName,
+        name: 'lName',
         type: 'input',
         message: "What is the employee's last name?"
     }), {
-        name: role,
+        name: 'role',
         type: 'input',
         message: "What is the employee's role?"
     }, {
-        name: manager,
+        name: 'manager',
         type: 'input',
         message: "Who is the employee's manager?"
     }
@@ -112,15 +118,15 @@ function addEmpl() {
 function upEmplRole() {
     inquirer
     .prompt ({
-        name: title,
+        name: 'title',
         type: 'input',
         message: "What is the employee's title?"
     }, {
-        name: salary,
+        name: 'salary',
         type: 'input',
         message: "What is the employee's salary?"
     }), {
-        name: department,
+        name: 'department',
         type: 'input',
         message: "What department is the employee in?"
     }
@@ -145,3 +151,4 @@ function exit() {
 };
 
 start();
+

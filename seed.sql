@@ -4,7 +4,7 @@ CREATE DATABASE employee_DB;
 USE employee_DB;
 
 CREATE TABLE departments (
-id INTEGER auto_increment NOT NULL PRIMARY KEY,
+id INTEGER auto_increment NOT NULL,
 department VARCHAR(30) NOT NULL,
 PRIMARY KEY (id)
 );
@@ -25,3 +25,9 @@ role_id INT NOT NULL,
 manager_id INT NOT NULL,
 PRIMARY KEY (id)
 );
+
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES ("Lisa", "Burs", 12, 34)
+
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES ("Josh", "Yogi", 24, 14)
