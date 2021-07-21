@@ -1,22 +1,24 @@
+// Links for different packages and pages
 const inquirer = require('inquirer');
 const mysql = require('mysql');
 require("dotenv").config();
 const connection = require('./connection');
 const util = require("util");
-const DB = require("./db");
 const cTable = require("console.table");
 const { executionAsyncResource } = require('async_hooks');
 const { allowedNodeEnvironmentFlags } = require('process');
 
 
+//Starting function for the program
 function start () {
     inquirer
         .prompt({
             name: 'list',
             type: 'list',
             message: 'What would you like to do?',
-            choices: ['View all employees', 'View all departments', 'View all roles', 'View all employees by department', 'View all employees by manager', 'Add employee', 'Add department', 'Add role', 'Remove employee', 'Update employee role', 'Update employee manager', 'Exit'],
+            choices: ['View all employees', 'View all departments', 'View all roles', 'Add employee', 'Add department', 'Add role', 'Update employee role', 'Exit'],
         })
+        //Responses for the prompts
         .then(function (response) {
             switch (response.list) {
                 case 'View all employees': allEmpl();
@@ -25,22 +27,16 @@ function start () {
                     break;
                 case 'View all roles': allRoles();
                     break;
-                case 'View all employees by department': emplDept();
-                    break;
-                // case 'View all employees by manager': emplMan();
-                //     break;
                 case 'Add employee': addEmpl();
                     break;
                 case 'Add department': addDept();
                     break;
                 case 'Add role': addRole();
                     break;
-                // case 'Remove employee': removeEmpl();
-                //     break;
+                case 'Remove employee': removeEmpl();
+                    break;
                 case 'Update employee role': upEmplRole();
                     break;
-                // case 'Update employee manager': upEmplMan();
-                //     break;
                 case 'Exit': connection.end();
                     break;
                     default:
@@ -49,6 +45,7 @@ function start () {
         });
 };
 
+//Viewing all employees
 const allEmpl = () => {
             connection.query('SELECT * FROM employee', (err, res) => {
                 if (err) throw err;
@@ -57,6 +54,7 @@ const allEmpl = () => {
                 });
 };
 
+//Viewing all departments
 const allDept = () => {
     connection.query('SELECT * FROM departments', (err, res) => {
         if (err) throw err;
@@ -65,6 +63,7 @@ const allDept = () => {
         });
 };
 
+//Viewing all roles
 const allRoles = () => {
     connection.query('SELECT * FROM roles', (err, res) => {
         if (err) throw err;
@@ -73,19 +72,7 @@ const allRoles = () => {
         });
 };
 
-const emplDept = () => {
-    connection.query('SELECT * FROM departments', (err, res) => {
-        if (err) throw err;
-            console.table(res);
-            start();
-        });
-};
-
-
-// function emplMan() {
-
-// };
-
+//Adding an employee
 function addEmpl() {
     inquirer
     .prompt ([
@@ -118,6 +105,7 @@ function addEmpl() {
     });
 };
 
+//Adding a department
 function addDept() {
     inquirer
     .prompt (
@@ -137,6 +125,7 @@ function addDept() {
     });
 };
 
+//Adding a role
 function addRole() {
     inquirer
     .prompt ([
@@ -165,10 +154,26 @@ function addRole() {
     });
 };
 
-// function removeEmpl() {
 
+// function removeEmpl() {
+//     inquirer
+//     .prompt ({
+//             name: 'delete',
+//             type: 'input',
+//             message: "Which employee would you like to delete?",
+//             choices: allEmpl()
+//         })
+//         .then ((answer) => {
+//     const query = 'DELETE FROM employee WHERE ?';
+//         connection.query(query, answer, (err, res) => {
+//             if (err) throw err;
+//             console.log(`${answer.first_name} was deleted from employee`) 
+//             start();
+//         });
+//     });
 // };
 
+//Updating employee role
 function upEmplRole() {
     inquirer
     .prompt ([{
@@ -185,7 +190,6 @@ function upEmplRole() {
         message: "What is the department ID?"
     }])
     .then ((answer) => {
-        // LOOK into this one
         const query = 'INSERT INTO roles SET ?';
         connection.query(query, answer, (err, res) => {
             if (err) throw err;
@@ -195,13 +199,6 @@ function upEmplRole() {
         });
 };
 
-// function upEmplMan() {
-
-// };
-
-function exit() {
-    return;
-};
-
+//Restarting the program
 start();
 
