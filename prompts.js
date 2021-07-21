@@ -100,11 +100,11 @@ function addEmpl() {
         }, {
             name: 'role_id',
             type: 'input',
-            message: "What is the employee's role?"
+            message: "What is the employee's role ID?"
         }, {
             name: 'manager_id',
             type: 'input',
-            message: "What is the employee's manager id?"
+            message: "What is the employee's manager ID?"
         }
     ])
     .then ((answer) => {
@@ -151,7 +151,7 @@ function addRole() {
             }, {
             name: 'dept_id',
             type: 'input',
-            message: "What is the department id?"
+            message: "What is the department ID?"
             }
     ])
     .then ((answer) => {
@@ -182,7 +182,7 @@ function upEmplRole() {
     }, {
         name: 'dept_id',
         type: 'input',
-        message: "What is the department id?"
+        message: "What is the department ID?"
     }])
     .then ((answer) => {
         // LOOK into this one
