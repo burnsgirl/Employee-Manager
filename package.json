@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/burnsgirl/Employee-Manager#readme",
   "dependencies": {
+    "console.table": "^0.10.0",
     "dotenv": "^10.0.0",
     "inquirer": "^8.1.2",
     "mysql": "^2.18.1",

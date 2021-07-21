@@ -9,7 +9,7 @@ department VARCHAR(30) NOT NULL,
 PRIMARY KEY (id)
 );
 
-CREATE TABLE role (
+CREATE TABLE roles (
 id INTEGER auto_increment NOT NULL,
 title VARCHAR(30) NOT NULL,
 salary DECIMAL NOT NULL,
@@ -31,3 +31,9 @@ VALUES ("Lisa", "Burs", 12, 34)
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES ("Josh", "Yogi", 24, 14)
+
+INSERT INTO departments (department)
+VALUES ("Engineer")
+
+INSERT INTO departments (department)
+VALUES ("Photographer")
