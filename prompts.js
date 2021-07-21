@@ -41,7 +41,7 @@ function start () {
                     break;
                 // case 'Update employee manager': upEmplMan();
                 //     break;
-                case 'Exit': exit();
+                case 'Exit': connection.end();
                     break;
                     default:
             
