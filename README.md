@@ -4,9 +4,10 @@
 
 <img src="Assests/one.png">
 
-https://drive.google.com/file/d/1bBjZ5Jx_Ci9zY_-TjTYh_61mewEkNry4/view?usp=sharing
+[Repo](https://github.com/burnsgirl/Employee-Manager)   |    [Walk-Thru](https://drive.google.com/file/d/1bBjZ5Jx_Ci9zY_-TjTYh_61mewEkNry4/view?usp=sharing)
 
-https://github.com/burnsgirl/Employee-Manager
+
+
 
 ## Description
 This application is used to store and update information about employees. You have the ability to add a new employee, department or role within the application. You also have the ability to view all the roles, departments, or employees you have. If you need to update a role then the function is there also. This is a command line application which has used Inquirer, Express, SQL, JaveScript, and Node.
